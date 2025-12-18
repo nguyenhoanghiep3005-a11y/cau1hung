@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+// Start output buffering and avoid direct PHP warnings printed to output
+ob_start();
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+
 require __DIR__ . '/../config/db.php';
 require __DIR__ . '/helpers/response.php';
 require __DIR__ . '/helpers/validator.php';
