@@ -1,14 +1,9 @@
 <?php
-// Default config. Don't commit local credentials—copy config.local.example.php -> config.local.php and set your values.
-$local = __DIR__ . '/config.local.php';
-if (file_exists($local)) {
-    return include $local;
-}
-
 return [
-    'db_host' => '127.0.0.1',
-    'db_name' => 'student_management',
-    'db_user' => 'root',
-    'db_pass' => '',
-    'db_charset' => 'utf8mb4',
+    'db_host'    => 'sql213.infinityfree.com',  
+    'db_user'    => 'if0_40099280',            
+    'db_pass'    => 'DxyY10Dm1L',              
+    'db_name'    => 'if0_40099280_sinhvien',    
+    'db_charset' => 'utf8mb4'
 ];
+?>
