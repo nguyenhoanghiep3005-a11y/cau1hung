@@ -40,3 +40,17 @@ Endpoints:
 - **DELETE** `/students.php?id=1`       — delete
 
 Responses are JSON. See `backend/api` for implementation and example usage.
+
+---
+
+## CI/CD (FTP deploy)
+I've added a GitHub Actions workflow at `.github/workflows/deploy-ftp.yml` which deploys the `backend` folder to your FTP server on push to `main` using `SamKirkland/FTP-Deploy-Action`.
+
+Before this workflow can run, add the following **Repository secrets** (Settings → Secrets and variables → Actions) in your GitHub repository:
+- `FTP_HOST` — e.g. `ftpupload.net`
+- `FTP_USERNAME` — e.g. `if0_40099280`
+- `FTP_PASSWORD` — your FTP password
+- `FTP_PORT` — optional (defaults to `21`)
+- `FTP_TARGET` — remote directory on the server (e.g. `/public_html`)
+
+Important: do **not** commit credentials into the repo. The workflow reads the secrets and will not run until they are configured.
