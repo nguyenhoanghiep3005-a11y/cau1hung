@@ -1,0 +1,8 @@
+# Ignore local config with credentials
+/backend/config/config.local.php
+
+# Typical ignores
+/vendor/
+/node_modules/
+.DS_Store
+.env
