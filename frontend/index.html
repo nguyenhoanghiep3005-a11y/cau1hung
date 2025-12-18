@@ -30,7 +30,7 @@
 </div>
 
 <script>
-const apiStudents = '../backend/api/students.php';
+const apiStudents = (location.protocol === 'file:') ? 'http://localhost/web-don-gian/backend/api/students.php' : '../backend/api/students.php';
 
 function showAlert(message, type = 'success'){
   document.getElementById('alerts').innerHTML = `\n    <div class="alert alert-${type} alert-dismissible" role="alert">${message}
