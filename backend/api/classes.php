@@ -1,7 +1,14 @@
 <?php
-// Simple read-only API for classes
+// Simple read-only API for classes (improved CORS)
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With');
 header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
 
 require __DIR__ . '/../config/db.php';
 require __DIR__ . '/helpers/response.php';

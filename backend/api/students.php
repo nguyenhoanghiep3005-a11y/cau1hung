@@ -7,11 +7,13 @@
 // PUT    /backend/api/students.php?id=1        => update (JSON)
 // DELETE /backend/api/students.php?id=1        => delete
 
-// CORS + basic headers
+// CORS + basic headers (improved)
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With');
+header('Access-Control-Allow-Credentials: false');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    // Preflight response
     http_response_code(204);
     exit;
 }
