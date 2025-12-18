@@ -4,7 +4,7 @@
 // Then visit: https://your-domain/backend/import_sql.php?token=YOUR_TOKEN
 // IMPORTANT: Replace $SECRET with a random value before uploading. Delete this file after import.
 
-$SECRET = 'CHANGE_ME_TOKEN'; // <<< CHANGE THIS BEFORE UPLOADING
+$SECRET = 's3cr3t-xyz-20251218'; // <<< CHANGE THIS BEFORE UPLOADING
 $token = $_GET['token'] ?? null;
 
 header('Content-Type: application/json; charset=utf-8');
