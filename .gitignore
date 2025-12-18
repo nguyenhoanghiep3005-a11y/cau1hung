@@ -1,5 +1,7 @@
 # Ignore local config with credentials
 /backend/config/config.local.php
+/backend/config/config.local.infinity.php
+/backend/config/config.local*.php
 
 # Typical ignores
 /vendor/
