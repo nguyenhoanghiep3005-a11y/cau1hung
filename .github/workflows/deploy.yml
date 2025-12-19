@@ -11,19 +11,19 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v4
 
-    # BƯỚC QUAN TRỌNG: Build React thành file tĩnh
+    # SỬA TẠI ĐÂY: Đổi 'frontend' thành 'fontend' để khớp với folder của bạn
     - name: Install and Build Frontend
       run: |
-        cd frontend
+        cd fontend
         npm install
         npm run build 
 
-    # Đẩy thư mục 'dist' (sau khi build) lên Hosting
+    # CẬP NHẬT ĐƯỜNG DẪN: Đổi './frontend/dist/' thành './fontend/dist/'
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./frontend/dist/
+        local-dir: ./fontend/dist/
         server-dir: ./htdocs/
