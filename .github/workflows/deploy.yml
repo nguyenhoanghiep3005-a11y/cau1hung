@@ -5,16 +5,25 @@ on:
       - main
 jobs:
   FTP-Deploy-Action:
-    name:  Deploy to Hosting
+    name: Deploy to Hosting
     runs-on: ubuntu-latest
     steps:
-    - name:  Get latest code
+    - name: Get latest code
       uses: actions/checkout@v4
-    
-    - name:  Sync files
+
+    # BƯỚC QUAN TRỌNG: Build React thành file tĩnh
+    - name: Install and Build Frontend
+      run: |
+        cd frontend
+        npm install
+        npm run build 
+
+    # Đẩy thư mục 'dist' (sau khi build) lên Hosting
+    - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./frontend/dist/
         server-dir: ./htdocs/

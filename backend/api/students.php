@@ -8,6 +8,11 @@
 // DELETE /backend/api/students.php?id=1        => delete
 
 // CORS + basic headers (improved)
+$data = json_decode(file_get_contents('php://input'), true);
+if (!$data) {
+    // Nếu Hosting không nhận được JSON, thử lấy từ $_POST
+    $data = $_POST;
+}
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Accept, X-Requested-With');

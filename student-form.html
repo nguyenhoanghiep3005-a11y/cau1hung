@@ -34,8 +34,9 @@
 </div>
 
 <script>
-const apiStudents = 'backend/api/students.php';
-const apiClasses  = 'backend/api/classes.php';
+const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+const apiStudents = currentPath + 'backend/api/students.php';
+const apiClasses  = currentPath + 'backend/api/classes.php';
 
 function showAlert(message, type = 'success'){
   document.getElementById('alerts').innerHTML = `\n    <div class="alert alert-${type} alert-dismissible" role="alert">${message}
