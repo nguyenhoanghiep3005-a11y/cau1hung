@@ -11,19 +11,19 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v4
 
-    # SỬA TẠI ĐÂY: Đổi 'frontend' thành 'fontend' để khớp với folder của bạn
-    - name: Install and Build Frontend
-      run: |
-        cd fontend
-        npm install
-        npm run build 
-
-    # CẬP NHẬT ĐƯỜNG DẪN: Đổi './frontend/dist/' thành './fontend/dist/'
+    # KHÔNG CẦN bước Install and Build vì đây là HTML thuần
+    
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./fontend/dist/
+        # Vì file index.html nằm ở gốc, ta để local-dir là ./
+        local-dir: ./
         server-dir: ./htdocs/
+        # Loại bỏ các file không cần thiết khi đẩy lên hosting
+        exclude: |
+          **/.git*
+          **/.github*
+          **/node_modules/**
