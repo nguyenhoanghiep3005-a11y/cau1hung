@@ -11,18 +11,19 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v4
 
-    # SỬA TẠI ĐÂY: Loại bỏ 'cd frontend' vì file package.json nằm ở ngoài cùng
+    # BƯỚC QUAN TRỌNG: Build React thành file tĩnh
     - name: Install and Build Frontend
       run: |
+        cd frontend
         npm install
         npm run build 
 
-    # SỬA TẠI ĐÂY: Thay đổi đường dẫn local-dir cho đúng thực tế
+    # Đẩy thư mục 'dist' (sau khi build) lên Hosting
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
+        local-dir: ./frontend/dist/
         server-dir: ./htdocs/
